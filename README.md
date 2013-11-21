@@ -19,7 +19,7 @@ The base case is straightforward:
 5. Call the `setCurrentStep()` method to cycle through the steps; optionally, add event handlers to the steps so that you can handle click events or do pre- and post-processing as needed. 
 
 For example:  
-```  
+```javascript  
 var $progressDiv = $("#progressBar");  
 var $progressBar = $progressDiv.progressStep();  
 $progressBar.addStep("First");  
@@ -51,14 +51,14 @@ The `progressStep()` method optionally takes an options object that you can use 
 
 For example, if you want to a `progressStep` instance with a yellow foreground color, you can set the `fillColor` option on creation:
 
-```  
+```javascript  
 var $progressDiv = $("#progressBar");  
 var $progressBar = $progressDiv.progressStep({ fillColor: "yellow" });
 ``` 
 
 Alternatively, if you decide you want *all* new instances of `progressStep` to use a blue line color, then you can set the `strokeColor` default:
 
-```  
+```javascript  
 $.fn.progressStep.defaults.strokeColor = "blue";
 ```
 

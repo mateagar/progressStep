@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Drawing Tests</title>
+        
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+        
+        <script src="scripts/jquery-1.10.2.js"></script>
+        <script src="scripts/raphael.js"></script>
+        <script src="../progressStep.js"></script>
+        
+        <script>
+            function onClick() {
+                console.log("Clicked: " + this.index);
+                return true;
+            }
+            
+            function beforeEntry() {
+                console.log("Before entry: " + this.index);
+                return true;
+            }
+
+            function afterEntry() {
+                console.log("After entry: " + this.index);
+            }
+        
+            function beforeExit() {
+                console.log("Before exit: " + this.index);
+                return true;
+            }
+
+            function afterExit() {
+                console.log("After exit: " + this.index);
+            }
+
+            $(document).ready(function () {
+                var $progressDiv = $("#progressBar");
+                var $progressBar = $progressDiv.progressStep();
+                $progressBar.addStep("Name");
+                $progressBar.addStep("Source");
+                $progressBar.addStep("Fields");
+                $progressBar.addStep("Filter");
+                $progressBar.addStep("Schedule");
+                
+                for (var stepCounter = 0; stepCounter < 5; stepCounter++) {
+                    var currentStep = $progressBar.getStep(stepCounter);
+                    currentStep.onClick = onClick;
+                    currentStep.beforeEntry = beforeEntry;
+                    currentStep.afterEntry = afterEntry;
+                    currentStep.beforeExit = beforeExit;
+                    currentStep.afterExit = afterExit;
+                }
+                
+                $progressBar.setCurrentStep(0);
+                $progressBar.refreshLayout();
+                
+                function resetVisited() {
+                    for (var counter = 0; counter < 5; counter++) {
+                        var currentStep = $progressBar.getStep(counter);
+                        currentStep.setVisited(false);
+                    }
+                }
+                
+                var counter = 1;
+                var intervalId = null;
+                function startLoop() {
+                    if (intervalId) {
+                        // continue
+                    }
+                    else {
+                        intervalId = setInterval(function () {
+                            if (counter == 0) {
+                                resetVisited();
+                            }
+                            $progressBar.setCurrentStep(counter);
+                            counter++;
+                            if (counter > 4) {
+                                counter = 0;
+                            }
+                        }, 1000);
+                    }
+                }
+                
+                function stopLoop() {
+                    if (intervalId) {
+                        clearInterval(intervalId);
+                        intervalId = null;
+                    }
+                }
+                
+                $("#startLoop").click(startLoop);
+                $("#stopLoop").click(stopLoop);
+                $("#resetVisited").click(resetVisited);
+            });
+        </script>
+    </head>
+    <body>
+        <div id="progressBar"></div>
+        <p>To manipulate the progress bar, click on a step above, or use one of the buttons below. Events logged to the console.</p>
+        <button id="startLoop">Start Loop</button> <button id="stopLoop">Stop Loop</button> <button id="resetVisited">Reset Visited</button>
+    </body>
+</html>

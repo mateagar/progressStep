@@ -164,7 +164,7 @@
             circle.attr({
                 fill: _options.fillColor,
                 stroke: _options.strokeColor,
-                "stroke-width": 2
+                "stroke-width": _options["stroke-width"],
             });
             
             var highlight = _paper.circle(0, 0, _options.radius - 3);
@@ -269,6 +269,7 @@
                 this.connector = _paper.path("M" + hCenter + "," + vCenter + 
                                              "L" + (hCenter + usableWidth) + "," + vCenter);
                 this.connector.attr("stroke", _options.strokeColor);
+                this.connector.attr("stroke-width", _options["stroke-width"]);
                 this.connector.toBack();
                 
                 for (var stepCounter = 0; stepCounter < stepCount; stepCounter++) {
@@ -295,6 +296,7 @@
         labelOffset: 30,
         "font-family": "'Helvetica Neue', 'Helvetica', Arial, sans-serif",
         "font-size": 10,
-        "font-weight": "normal"
+        "font-weight": "normal",
+        "stroke-width": 2,
     };
 }(jQuery));

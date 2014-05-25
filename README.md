@@ -48,6 +48,7 @@ The `progressStep()` method optionally takes an options object that you can use 
 * **font-family**: The font family used for the labels and numbers on each step.
 * **font-size**: The label font size. (Number size is set automatically based on the radius option.)
 * **font-weight**: The weight of the label and number fonts. 
+* **stroke-width**: The stroke width of the circles and the connectors. 
 
 For example, if you want to a `progressStep` instance with a yellow foreground color, you can set the `fillColor` option on creation:
 

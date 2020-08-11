@@ -65,7 +65,7 @@ $.fn.progressStep.defaults.strokeColor = "blue";
 `progressStep` Methods
 ----------------------
 
-###progressStep(options)###
+### progressStep(options)
 Creates a new step-wise progress bar and binds it to the `<div>` on which this method is called. If invoked more than once on the same jQuery object, will return a single instance; however, if you create a new jQuery object for the same div, you will end up with more than one progress bar.
 
 **parameters**  
@@ -75,7 +75,7 @@ Creates a new step-wise progress bar and binds it to the `<div>` on which this m
 The progress bar instance.
 
 
-###getClickEnabled()###
+### getClickEnabled()
 Indicates whether user interactions are enabled. If enabled, any `onClick` event handlers you have added to the step objects in the progress bar will be invoked.
 
 **parameters**  
@@ -84,7 +84,7 @@ Indicates whether user interactions are enabled. If enabled, any `onClick` event
 **returns**  
 `true` (default) if user clicks trigger event callbacks; `false` if user interactions are disabled.
 
-###setClickEnabled(enabled)###
+### setClickEnabled(enabled)
 Determines whether user interactions are enabled. If enabled, any `onClick` event handlers you have added to the step objects in the progress bar will be invoked.
 
 **parameters**  
@@ -93,7 +93,7 @@ Determines whether user interactions are enabled. If enabled, any `onClick` even
 **returns**  
 (none)
 
-###getOptions()###
+### getOptions()
 Returns the control's set of options. See "Options and Defaults" above for an explanation of each one.
 
 **parameters**  
@@ -102,7 +102,7 @@ Returns the control's set of options. See "Options and Defaults" above for an ex
 **returns**  
 Options bound to the control instance.
 
-###getSteps()###
+### getSteps()
 Returns the array of steps in the progress bar. NOTE: you should not modify this array directly; instead, call the `addStep()` method to create and push a new step onto the list.
 
 **parameters**  
@@ -120,7 +120,7 @@ A convenience method which returns the step at the index position specified. Che
 **returns**  
 A step object if one exists at the position; otherwise `null`.
 
-###getCurrentStep()###
+### getCurrentStep()
 Provides the index of the currently active step.
 
 **parameters**  
@@ -129,7 +129,7 @@ Provides the index of the currently active step.
 **returns**  
 The index of the current active step, or -1 if there is no active step.
 
-###setCurrentStep(stepIndex)###
+### setCurrentStep(stepIndex)
 Moves the progress bar to the step at the index position specified. Triggers all before and after events on the current step (if any) and the newly selected step.
 
 **parameters**   
@@ -138,7 +138,7 @@ Moves the progress bar to the step at the index position specified. Triggers all
 **returns**  
 (none)
 
-###addStep(name)###
+### addStep(name)
 Creates a new step with the given name and pushes it onto the list of available steps.
 
 **parameters**  
@@ -147,7 +147,7 @@ Creates a new step with the given name and pushes it onto the list of available 
 **returns**  
 A new `step` object.
 
-###refreshLayout()###
+### refreshLayout()
 Positions all of the elements within the control. Required to properly render the progress bar for the first time, you may want to call invoke this method at other times in response to other changes (for example, after the size of the parent `<div>` element changes, or after you add a new step.)
 
 **parameters**  
@@ -171,7 +171,7 @@ Each step object exposes the following properties:
 * **active** (boolean): Indicates whether the step is the currently active step in the progress bar. To make a step active, you should call the `setCurrentStep()` method on the progress bar, as this method will invoke the appropriate event handlers and update step visuals for both the previously active step and the newly active one.
 * **visited** (boolean): Indicates whether the step has been active before. Rather than modify this property directly, you should call the step's `setVisited()` method, which properly renders the step according to the new `visited` value. 
 
-###setVisited(visited)###
+### setVisited(visited)
 Sets the `visited` property on the step and (if necessary) re-renders the step to have the appropriate appearance for the new value.
 
 **parameters**  
@@ -180,7 +180,7 @@ Sets the `visited` property on the step and (if necessary) re-renders the step t
 **returns**  
 (none)
 
-###onClick(function)###
+### onClick(function)
 Sets a callback function to handle user click events on the step. If the function returns `true`, then clicking on a step will set that step to active. The default implementation returns `false`.
 
 **parameters**  
@@ -189,7 +189,7 @@ Sets a callback function to handle user click events on the step. If the functio
 **returns**  
 (none)
 
-###beforeEntry(function)###
+### beforeEntry(function)
 Sets a callback function to handle pre-processing before a step becomes active. If the function returns `true` (default behavior), then the step will become active.
 
 **parameters**  
@@ -198,13 +198,13 @@ Sets a callback function to handle pre-processing before a step becomes active. 
 **returns**  
 (none)
 
-###afterEntry(function)###
+### afterEntry(function)
 Sets a callback function to handle post-processing once a step has become active. The return value of the callback is ignored.
 
 **parameters**  
 *function* (function): A function to be invoked after a step has become active.
 
-###beforeExit(function)###
+### beforeExit(function)
 Sets a callback function to handle pre-processing before a step becomes inactive. If the function returns `true` (default behavior), then the step will become inactive.
 
 **parameters**  
@@ -213,7 +213,7 @@ Sets a callback function to handle pre-processing before a step becomes inactive
 **returns**  
 (none)
 
-###afterExit(function)###
+### afterExit(function)
 Sets a callback function to handle post-processing once a step has become inactive. The return value of the callback is ignored.
 
 **parameters**  
